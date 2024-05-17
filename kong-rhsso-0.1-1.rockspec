@@ -1,7 +1,7 @@
 package = "kong-rhsso"
 version = "0.1-1"
 source = {
-  url = "#"
+  url = "https://github.com/pedrofarbo/kong-rhsso"
 }
 
 description = {
@@ -10,7 +10,7 @@ description = {
     This plugin uses the RHSSO introspection endpoint to validate tokens and
     supports multiple realms, clients, and scope validation.
   ]],
-  homepage = "#",
+  homepage = "https://github.com/pedrofarbo/kong-rhsso",
   license = "MIT"
 }
 
