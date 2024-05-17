@@ -42,8 +42,10 @@ function kong_rhsso:access(conf)
 
     local response_body = res.body
     kong.log.info(response_body)
+    kong.log.info(response_body.active)
 
     if response_body.active then
+      kong.log.info(response_body.active)
       -- Validate the required scope for the client
       local token_scopes = response_body.scope and response_body.scope:split(" ") or {}
       local required_scope = client.scope
