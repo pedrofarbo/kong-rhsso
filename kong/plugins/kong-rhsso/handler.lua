@@ -1,5 +1,5 @@
 local http = require "resty.http"
-local json = require "resty.libcjson"
+local json = require "cjson"
 
 local kong_rhsso = {
   PRIORITY = 1000
