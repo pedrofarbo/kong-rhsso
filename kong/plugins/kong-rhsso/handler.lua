@@ -48,7 +48,7 @@ function kong_rhsso:access(conf)
       if not client.scope then
         return -- token is valid, allow the request
       end
-      
+
       -- Validate the required scope for the client
       local token_scopes = response_body.scope and response_body.scope:split(" ") or {}
       local required_scope = client.scope
@@ -66,9 +66,9 @@ function kong_rhsso:access(conf)
 
       return -- token is valid, allow the request
     end
-
-    return kong.response.exit(401, { message = "Token inválido ou expirado!" })
   end
+
+  return kong.response.exit(401, { message = "Token inválido ou expirado!" })
 end
 
 -- Utility function to split string by spaces
