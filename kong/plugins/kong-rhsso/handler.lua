@@ -1,5 +1,5 @@
 local http = require "resty.http"
-local cjson = require "cjson"
+local json = require "resty.libcjson"
 
 local kong_rhsso = {
   PRIORITY = 1000
@@ -40,7 +40,7 @@ function kong_rhsso:access(conf)
       return kong.response.exit(500, { message = "Internal Server Error" })
     end
 
-    local response_body = res.body
+    local response_body = json.decode(res.body)
     kong.log.info(response_body)
     kong.log.info(response_body.active)
 

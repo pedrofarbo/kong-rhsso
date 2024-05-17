@@ -1,5 +1,5 @@
 package = "kong-rhsso"
-version = "0.1-2"
+version = "0.1-3"
 source = {
   url = "git://github.com/pedrofarbo/kong-rhsso"
 }
@@ -16,6 +16,7 @@ description = {
 
 dependencies = {
   "lua >= 5.1",
+  "lua-resty-libcjson >= 1.4-1",
   "lua-resty-http >= 0.15"
 }
 
