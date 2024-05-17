@@ -2,7 +2,7 @@ local http = require "resty.http"
 local json = require "cjson"
 
 local RhssoHandler = {
-  VERSION  = "0.1.3",
+  VERSION = "0.1.3",
   PRIORITY = 1000
 }
 
