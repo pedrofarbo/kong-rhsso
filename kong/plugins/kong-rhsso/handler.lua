@@ -40,12 +40,15 @@ function kong_rhsso:access(conf)
       return kong.response.exit(500, { message = "Internal Server Error" })
     end
 
+    kong.log.info(res.body)
+
     local response_body = json.decode(res.body)
-    kong.log.info(response_body)
-    kong.log.info(response_body.active)
 
     if response_body.active then
-      kong.log.info(response_body.active)
+      if not client.scope then
+        return -- token is valid, allow the request
+      end
+      
       -- Validate the required scope for the client
       local token_scopes = response_body.scope and response_body.scope:split(" ") or {}
       local required_scope = client.scope
