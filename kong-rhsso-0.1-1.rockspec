@@ -1,7 +1,7 @@
 package = "kong-rhsso"
 version = "0.1-1"
 source = {
-  url = "https://github.com/pedrofarbo/kong-rhsso"
+  url = "git://github.com/pedrofarbo/kong-rhsso"
 }
 
 description = {
