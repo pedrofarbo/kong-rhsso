@@ -22,7 +22,7 @@ dependencies = {
 build = {
   type = "builtin",
   modules = {
-    ["kong-rhsso.handler"] = "handler.lua",
-    ["kong-rhsso.schema"] = "schema.lua"
+    ["kong.plugins.kong-rhsso.handler"] = "kong/plugins/kong-rhsso/handler.lua",
+    ["kong.plugins.kong-rhsso.schema"] = "kong/plugins/kong-rhsso/schema.lua"
   }
 }

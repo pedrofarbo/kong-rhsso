@@ -2,8 +2,7 @@ local http = require "resty.http"
 local cjson = require "cjson"
 
 local kong_rhsso = {
-  PRIORITY = 1000,
-  VERSION = "0.1",
+  PRIORITY = 1000
 }
 
 function kong_rhsso:access(conf)
