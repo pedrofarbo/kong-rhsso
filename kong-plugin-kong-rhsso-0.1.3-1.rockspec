@@ -1,5 +1,12 @@
-package = "kong-rhsso"
-version = "0.1-3"
+local plugin_name = "kong-rhsso"
+local package_name = "kong-plugin-"..plugin_name
+local package_version = "0.1.3"
+local rockspec_revision = "1"
+
+package = package_name
+version = package_version .. "-" .. rockspec_revision
+supported_platforms = { "linux", "macosx" }
+
 source = {
   url = "git://github.com/pedrofarbo/kong-rhsso"
 }
