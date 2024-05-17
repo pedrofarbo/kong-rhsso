@@ -39,6 +39,9 @@ function kong_rhsso:access(conf)
     end
 
     local response_body = cjson.decode(res.body)
+    
+    kong.log.err(response_body)
+
     if response_body.active then
       -- Validate the required scope for the client
       local token_scopes = response_body.scope and response_body.scope:split(" ") or {}
