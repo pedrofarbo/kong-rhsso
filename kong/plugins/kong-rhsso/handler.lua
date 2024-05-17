@@ -34,16 +34,14 @@ function kong_rhsso:access(conf)
     })
 
     kong.log.info("Introspect URL: ", introspect_url);
-    kong.log.info(res.body)
 
     if not res then
       kong.log.err("Falha ao validar token: ", err)
       return kong.response.exit(500, { message = "Internal Server Error" })
     end
 
-    local response_body = cjson.decode(res.body)
+    local response_body = res.body
     kong.log.info(response_body)
-    kong.log.info(response_body.exp)
 
     if response_body.active then
       -- Validate the required scope for the client
