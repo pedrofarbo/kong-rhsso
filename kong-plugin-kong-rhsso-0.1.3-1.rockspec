@@ -7,9 +7,9 @@ package = package_name
 version = package_version .. "-" .. rockspec_revision
 supported_platforms = { "linux", "macosx" }
 
-source = {
-  url = "git://github.com/pedrofarbo/kong-rhsso"
-}
+#source = {
+#  url = "git://github.com/pedrofarbo/kong-rhsso"
+#}
 
 description = {
   summary = "Kong plugin for RHSSO authentication",

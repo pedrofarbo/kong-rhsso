@@ -1,16 +1,12 @@
 local http = require "resty.http"
 local json = require "cjson"
 
-local kong_rhsso = {
+local RhssoHandler = {
   VERSION  = "0.1.3",
   PRIORITY = 1000
 }
 
-function kong_rhsso:new()
-  kong_rhsso.super.new(self, "kong-rhsso")
-end
-
-function kong_rhsso:access(conf)
+function RhssoHandler:access(conf)
   local req = kong.request
   local token = req.get_header("Authorization")
   if not token then
@@ -84,5 +80,4 @@ function string:split(sep)
   return fields
 end
 
-return kong_rhsso
-
+return RhssoHandler
