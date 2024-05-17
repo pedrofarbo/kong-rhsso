@@ -19,7 +19,7 @@ function kong_rhsso:access(conf)
 
   local httpc = http.new()
   for _, client in ipairs(conf.clients) do
-    local introspect_url = string.format("%s/auth/realms/%s/protocol/openid-connect/token/introspect", conf.rhsso_base_url, client.realm)
+    local introspect_url = string.format("%s/realms/%s/protocol/openid-connect/token/introspect", conf.rhsso_base_url, client.realm)
     local res, err = httpc:request_uri(introspect_url, {
       method = "POST",
       body = ngx.encode_args({
