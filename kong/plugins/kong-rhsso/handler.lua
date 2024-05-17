@@ -61,9 +61,9 @@ function kong_rhsso:access(conf)
 
       return -- token is valid, allow the request
     end
-  end
 
-  return kong.response.exit(401, { message = "Token inválido ou expirado!" })
+    return kong.response.exit(401, { message = "Token inválido ou expirado!" })
+  end
 end
 
 -- Utility function to split string by spaces
