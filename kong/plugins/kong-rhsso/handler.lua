@@ -6,6 +6,10 @@ local kong_rhsso = {
   PRIORITY = 1000
 }
 
+function kong_rhsso:new()
+  kong_rhsso.super.new(self, "kong-rhsso")
+end
+
 function kong_rhsso:access(conf)
   local req = kong.request
   local token = req.get_header("Authorization")
