@@ -40,7 +40,7 @@ function kong_rhsso:access(conf)
 
     local response_body = cjson.decode(res.body)
     
-    kong.log.err(response_body)
+    return kong.response.exit(200, response_body)
 
     if response_body.active then
       -- Validate the required scope for the client
