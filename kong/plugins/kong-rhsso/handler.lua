@@ -2,6 +2,7 @@ local http = require "resty.http"
 local json = require "cjson"
 
 local kong_rhsso = {
+  VERSION  = "0.1.3",
   PRIORITY = 1000
 }
 
