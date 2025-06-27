@@ -34,14 +34,16 @@ function RhssoHandler:access(conf)
       ssl_verify = false,
     })
 
-    kong.log.info("Introspect URL: ", introspect_url);
+    kong.log.debug("Introspect URL: ", introspect_url);
 
     if not res then
       kong.log.err("Falha ao validar token: ", err)
       return kong.response.exit(500, { message = "Internal Server Error" })
+    else
+      kong.log.debug("Token validado com sucesso!")
     end
 
-    kong.log.info(res.body)
+    kong.log.debug(res.body)
 
     local response_body = json.decode(res.body)
 

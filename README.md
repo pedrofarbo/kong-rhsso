@@ -1,9 +1,15 @@
-Como adicionar o plugin em um gateway services via RestAPI do Kong: 
 
-http://{kong-base-path}/services/{id}/plugins
+## Para subir um Kong local
 
-Body:
+```bash
+docker-compose up -d
+```
 
+## Como adicionar o plugin em um gateway services via RestAPI do Kong: 
+
+```bash
+curl -X POST http://localhost:8001/services/{id}/plugins \
+ -d @- <<EOF
 {
 	"name": "kong-rhsso",
 	"config": {
@@ -19,5 +25,14 @@ Body:
 		]
 	}
 }
+EOF
+
+```
+
+## Para listar plugins habilitados no gateway
+
+```bash
+curl localhost:8001/plugins/enabled | jq
+```
 
 Qualquer dúvida entrar em contato com pedrofarbo@gmail.com
