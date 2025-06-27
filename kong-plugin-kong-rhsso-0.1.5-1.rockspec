@@ -1,6 +1,6 @@
 local plugin_name = "kong-rhsso"
 local package_name = "kong-plugin-"..plugin_name
-local package_version = "0.1.3"
+local package_version = "0.1.5"
 local rockspec_revision = "1"
 
 package = package_name

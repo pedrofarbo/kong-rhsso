@@ -2,7 +2,7 @@ local http = require "resty.http"
 local json = require "cjson"
 
 local RhssoHandler = {
-  VERSION = "0.1.3",
+  VERSION = "0.1.5",
   PRIORITY = 1000
 }
 
@@ -10,12 +10,12 @@ function RhssoHandler:access(conf)
   local req = kong.request
   local token = req.get_header("Authorization")
   if not token then
-    return kong.response.exit(401, { message = "Acesso não autorizado!" })
+    return kong.response.exit(403, { message = "(COD-05) - Token é obrigatório!" })
   end
 
   token = token:match("^Bearer%s+(.+)$")
   if not token then
-    return kong.response.exit(401, { message = "Formato do token inválido!" })
+    return kong.response.exit(403, { message = "(COD-04) - Formato do token inválido!" })
   end
 
   local httpc = http.new()
@@ -38,7 +38,7 @@ function RhssoHandler:access(conf)
 
     if not res then
       kong.log.err("Falha ao validar token: ", err)
-      return kong.response.exit(500, { message = "Internal Server Error" })
+      return kong.response.exit(403, { message = "(COD-03) - Falha ao validar o token" })
     else
       kong.log.debug("Token validado com sucesso!")
     end
@@ -64,14 +64,14 @@ function RhssoHandler:access(conf)
       end
 
       if not scope_found then
-        return kong.response.exit(403, { message = "Acesso não autorizado!" })
+        return kong.response.exit(403, { message = "(COD-02) - Acesso não autorizado!" })
       end
 
       return -- token is valid, allow the request
     end
   end
 
-  return kong.response.exit(401, { message = "Token inválido ou expirado!" })
+  return kong.response.exit(403, { message = "(COD-01) - Token expirado!" })
 end
 
 -- Utility function to split string by spaces
