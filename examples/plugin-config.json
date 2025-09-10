@@ -1,0 +1,30 @@
+{
+  "name": "kong-rhsso",
+  "config": {
+    "rhsso_base_url": "https://keycloak.example.com/auth",
+    "timeout": 10,
+    "ssl_verify": false,
+    "cache_ttl": 300,
+    "enable_metrics": true,
+    "log_level": "info",
+    "clients": [
+      {
+        "client_id": "frontend-app",
+        "client_secret": "your-frontend-client-secret",
+        "realm": "master",
+        "scopes": "read,write"
+      },
+      {
+        "client_id": "backend-service",
+        "client_secret": "your-backend-client-secret", 
+        "realm": "services",
+        "scopes": "admin"
+      },
+      {
+        "client_id": "mobile-app",
+        "client_secret": "your-mobile-client-secret",
+        "realm": "mobile"
+      }
+    ]
+  }
+}
